@@ -5,12 +5,10 @@ class Burbuja(object):
         self.lista = lista
         self.tam_lista = len(lista)
 
-    def ordenar(self):
-        i = 1
-        Ordenado = False
-        while i<self.tam_lista or not Ordenado  :
-            i+=1
-            Ordenado = True
+    def ordenar(self,tam_lista):
+        if tam_lista >= self.tam_lista:
+            return self.lista
+        else:
             for j in range(self.tam_lista-1):
                 if self.lista[j] > self.lista[j+1]:
                     Ordenado = False
@@ -18,4 +16,4 @@ class Burbuja(object):
                     self.lista[j] = self.lista[j+1]
                     self.lista[j+1] = tmp
                     #print("Lista",self.lista)
-        return self.lista
+            return self.ordenar(tam_lista+1)
